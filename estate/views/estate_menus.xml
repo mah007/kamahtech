@@ -1,0 +1,11 @@
+<odoo>
+<!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+<menuitem
+        id="estate_menu_root"
+        name="Real Estate" sequence="5"/>
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="estate_advertisement_menu" name="Advertisements" sequence="5" parent="estate_menu_root" />
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="estate_property_menu_action" name="Properties" parent="estate_advertisement_menu" action="estate_property_action" sequence="5"/>
+
+</odoo>
