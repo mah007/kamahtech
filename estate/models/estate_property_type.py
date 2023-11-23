@@ -9,4 +9,11 @@ class EstatePropertyType(models.Model):
     _description = "Real Estate Property Type"
     _order = "sequence, name"
 
-    
+    # --------------------------------------- Fields Declaration ----------------------------------
+
+    # Basic
+    name = fields.Char("Name", required=True)
+    sequence = fields.Integer("Sequence", default=10)
+
+
+
