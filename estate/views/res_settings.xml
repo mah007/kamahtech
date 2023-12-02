@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="res_config_settings_view_form_estate" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.estate</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="25"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="estate" string="Estate"
+                         data-key="estate" groups="base.group_user">
+                        <h2>Estate Control Panel Configurations</h2>
+                        <div class="row mt16 o_settings_container" name="ProjectName_setting_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div>
+                                    <label for="add_fee_default_product_id"/>
+                                    <div class="text-muted">
+                                        Choose the product for fees
+                                    </div>
+                                    <div>
+                                        <field name="add_fee_default_product_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_estate_configuration" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module': 'estate'}</field>
+        </record>
+
+<!--        <menuitem id="ProjectName_settings" name="Settings" parent="your_root_menu"-->
+<!--                  action="action_ProjectName_configuration" groups="base.group_system"/>-->
+
+    </data>
+</odoo>

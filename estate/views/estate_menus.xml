@@ -1,16 +1,19 @@
 <odoo>
 <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
-<menuitem
-        id="estate_menu_root"
-        name="Real Estate"
-        web_icon="estate,static/description/icon.png"
-        sequence="5"/>
-    <!-- This Menu Item Must have a parent -->
-    <menuitem id="estate_advertisement_menu" name="Advertisements" sequence="5" parent="estate_menu_root" />
-    <!-- This Menu Item must have a parent and an action -->
-    <menuitem id="estate_property_menu_action" name="Properties" parent="estate_advertisement_menu" action="estate_property_action" sequence="5"/>
-    <!-- This Menu Item must have a parent and an action -->
-    <menuitem id="estate_property_type_menu_action" name="Types" parent="estate_advertisement_menu" action="estate_property_type_action" sequence="6"/>
+
+
+            <menuitem id="estate_menu_root"
+                      web_icon="estate,static/description/icon.png"
+                      name="Real Estate">
+        <menuitem id="estate_advertisement_menu" name="Advertisements" sequence="5">
+            <menuitem id="estate_property_menu_action" action="estate_property_action" sequence="5"/>
+        </menuitem>
+        <menuitem id="estate_settings_menu" name="Settings" sequence="10">
+            <menuitem id="settings_settings" name="Settings" action="action_estate_configuration"/>
+            <menuitem id="estate_property_type_menu_action" action="estate_property_type_action" sequence="5"/>
+            <menuitem id="estate_property_tag_menu_action" action="estate_property_tag_action" sequence="10"/>
+        </menuitem>
+    </menuitem>
 
 
 </odoo>

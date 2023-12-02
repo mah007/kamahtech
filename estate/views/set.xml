@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="res_config_settings_view_form_ProjectName" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.ProjectName</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="25"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="ProjectName" string="ProjectTitle"
+                         data-key="ProjectName" groups="base.group_erp_manager">
+                        <h2>HomeWheel Control Panel Configurations</h2>
+                        <div class="row mt16 o_settings_container" name="ProjectName_setting_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div>
+                                    <label for="example_field"/>
+                                    <div class="text-muted">
+                                        Example Field
+                                    </div>
+                                    <div>
+                                        <field name="example_field"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_ProjectName_configuration" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module': 'ProjectName'}</field>
+        </record>
+
+        <menuitem id="ProjectName_settings" name="Settings" parent="your_root_menu"
+                  action="action_ProjectName_configuration" groups="base.group_system"/>
+
+    </data>
+</odoo>

@@ -19,6 +19,7 @@ class EstatePropertyType(models.Model):
     # Basic
     name = fields.Char("Name", required=True)
     sequence = fields.Integer("Sequence", default=10)
+    product_id = fields.Many2one('product.product','accounting product')
 
     # Relational (for inline view)
     property_ids = fields.One2many("estate.property", "property_type_id", string="Properties")

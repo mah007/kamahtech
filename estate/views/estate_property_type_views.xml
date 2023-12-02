@@ -21,6 +21,9 @@
                             <field name="name"/>
                         </h1>
                     </div>
+                    <group>
+                        <field name="product_id" />
+                    </group>
                     <notebook>
                         <page string="Properties">
                             <field name="property_ids" readonly="1">

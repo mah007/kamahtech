@@ -1,0 +1,58 @@
+<odoo>
+    <data>
+        <record id="student_view_form" model="ir.ui.view">
+            <field name="name">student_view_form</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <form string="student_form">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="dob"/>
+                                <field name="age"/>
+                            </group>
+
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="school_view_tree" model="ir.ui.view">
+            <field name="name">school_view_tree</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <tree string="school_tree">
+                    <field name="name"/>
+                    <field name="age"/>
+                    <field name="dob"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="student_action" model="ir.actions.act_window">
+            <field name="name">student List</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">school.student</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="school_root" name="School System" sequence="5"/>
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="student_categ" name="Students" parent="school_root" sequence="1"/>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="student_list" name="Students list" parent="student_categ" action="student_action" sequence="1"/>
+
+
+    </data>
+</odoo>

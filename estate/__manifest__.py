@@ -16,7 +16,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','mail'],
+    'depends': ['base', 'mail', 'product'],
 
     # always loaded
     'data': [
@@ -26,9 +26,10 @@
         "views/estate_property_type_views.xml",
         "views/estate_property_views.xml",
         "views/res_users_views.xml",
-        "views/estate_menus.xml",
         'reports/estate_template.xml',
         'reports/estate_report.xml',
+        'views/res_settings.xml',
+        "views/estate_menus.xml",
     ],
     # only loaded in demonstration mode
     'demo': [
