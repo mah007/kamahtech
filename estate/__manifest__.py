@@ -27,6 +27,8 @@
         "views/estate_property_views.xml",
         "views/res_users_views.xml",
         "views/estate_menus.xml",
+        'reports/estate_template.xml',
+        'reports/estate_report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
