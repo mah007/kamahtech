@@ -1,0 +1,31 @@
+<odoo>
+    <record id="installment_view_form" model="ir.ui.view">
+        <field name="name">installment_view_form</field>
+        <field name="model">estate.property.installment</field>
+        <field name="arch" type="xml">
+            <form string="installment form">
+
+                <group>
+                    <field name="fees_amount"/>
+                    <field name="installment_no"/>
+                </group>
+
+
+
+                <footer>
+                    <button string="Create installment" name="insta_pay" type="object" class="btn-primary"
+                            data-hotkey="q"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="installment_wizard_action" model="ir.actions.act_window">
+            <field name="name">Launch installment</field>
+            <field name="res_model">estate.property.installment</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+</odoo>

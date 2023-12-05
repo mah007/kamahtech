@@ -7,8 +7,7 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_sold" type="object" string="Sold" states="new,offer_received" class="btn btn-dark"/>
-                    <button name="action_sold" type="object" string="Sold" states="offer_accepted" class="oe_highlight"/>
+                    <button name="action_sold" type="object" string="Sold" states="new,offer_received,offer_accepted" class="btn btn-danger"/>
                     <button name="action_cancel" type="object" string="Cancel" states="new,offer_received,offer_accepted"/>
                     <field name="state" widget="statusbar" statusbar_visible="new,offer_received,offer_accepted,sold"/>
                 </header>
