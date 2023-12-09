@@ -3,9 +3,8 @@
 
 from odoo import fields, models, Command
 from odoo.exceptions import UserError, ValidationError
-from datetime import date,timedelta
+from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
-
 
 
 class EstateInstallment(models.TransientModel):
@@ -30,25 +29,28 @@ class EstateInstallment(models.TransientModel):
         props = self.env['estate.property'].browse(
             self.env.context.get('active_ids') if self.env.context.get('active_ids') else [])
         journal = self.env["account.journal"].search([("type", "=", "sale")], limit=1)
+        invoice = self.env["account.move"]
         # Another way to get the journal:
         # journal = self.env["account.move"].with_context(default_move_type="out_invoice")._get_default_journal()
         for prop in props:
             price = 0
             n = 0
-            com =[]
             if self.installment_no == '1':
+                print('0')
+                n = 0
                 price = prop.selling_price
-                n  = 0
-            elif self.installment_no == '6':
-                n =5
-                price = prop.selling_price/6
-            elif self.installment_no == '12':
-                n =11
-                price = prop.selling_price/12
-            elif self.installment_no == '24':
-                n=23
-                price = prop.selling_price/24
-
+            if self.installment_no == '6':
+                print('6')
+                n = 6
+                price = prop.selling_price / 6
+            if self.installment_no == '12':
+                print('12')
+                n = 12
+                price = prop.selling_price / 12
+            if self.installment_no == '24':
+                print('24')
+                n = 24
+                price = prop.selling_price / 24
             vals1 = {
                 "partner_id": prop.buyer_id.id,
                 "move_type": "out_invoice",
@@ -69,68 +71,11 @@ class EstateInstallment(models.TransientModel):
                     }),
                 ],
             }
-            valn = {
-                "partner_id": prop.buyer_id.id,
-                "move_type": "out_invoice",
-                "journal_id": journal.id,
-                # "invoice_date": date.today() ,
-                "invoice_line_ids": [
 
-                ],
-            }
-            if self.installment_no == '1':
-                self.env["account.move"].create(vals1)
-            elif self.installment_no == '6':
-                item = Command.create({
-                        "name": prop.name,
-                        'product_id': prop.property_type_id.product_id.id,
-                        "quantity": 1.0,
-                        "price_unit": price,
-                    }),
-                valn['invoice_line_ids'].append(item)
-
-                com.append(vals1)
-                print('val1',vals1)
-                print('valn',valn)
-                for no in range(n):
+            for no in range(n):
+                if no == 0:
+                    invoice.create(vals1)
+                    vals1['invoice_line_ids'].pop(1)
+                else:
                     vals1['invoice_date'] = date.today() + relativedelta(months=no)
-                    com.append(valn)
-                    print(no)
-                self.env["account.move"].create(com)
-            elif self.installment_no == '12':
-                item = Command.create({
-                        "name": prop.name,
-                        'product_id': prop.property_type_id.product_id.id,
-                        "quantity": 1.0,
-                        "price_unit": price,
-                    }),
-                valn['invoice_line_ids'].append(item)
-                com.append(vals1)
-                for no in range(n):
-                    vals1['invoice_date'] = date.today() + relativedelta(months=no)
-                    com.append(valn)
-                    print(no)
-                self.env["account.move"].create(com)
-            elif self.installment_no == '24':
-                item = Command.create({
-                        "name": prop.name,
-                        'product_id': prop.property_type_id.product_id.id,
-                        "quantity": 1.0,
-                        "price_unit": price,
-                    }),
-                valn['invoice_line_ids'].append(item)
-                com.append(vals1)
-                for no in range(n):
-                    vals1['invoice_date'] = date.today() + relativedelta(months=no)
-                    com.append(valn)
-                    print(no)
-                self.env["account.move"].create(com)
-
-            prop.action_sold()
-
-
-
-
-
-
-
+                    invoice.create(vals1)
