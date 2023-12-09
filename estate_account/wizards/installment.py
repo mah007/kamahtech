@@ -37,7 +37,7 @@ class EstateInstallment(models.TransientModel):
             n = 0
             if self.installment_no == '1':
                 print('0')
-                n = 0
+                n = 1
                 price = prop.selling_price
             if self.installment_no == '6':
                 print('6')
@@ -73,6 +73,7 @@ class EstateInstallment(models.TransientModel):
             }
 
             for no in range(n):
+                print('start on zero = ',no)
                 if no == 0:
                     invoice.create(vals1)
                     vals1['invoice_line_ids'].pop(1)
