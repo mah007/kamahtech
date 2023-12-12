@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <template id="report_estate_collective">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h1>Estate total report</h1>
+
+                        <table class="table table-sm o_main_table mt-4">
+                            <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                            <thead class="sale_tbody">
+                                <tr>
+                                    <th>Property</th>
+                                    <th>Type</th>
+                                    <th>Aria</th>
+                                    <th>Expected Price</th>
+                                    <th>Selling Price</th>
+                                    <th>Price Deference</th>
+                                </tr>
+                            </thead>
+                            <tbody class="sale_tbody">
+                                <t t-set="total" t-value="0"/>
+                                <t t-foreach="props" t-as="prop">
+                                    <tr>
+                                        <t t-set="total" t-value="total+(prop['selling_price'] - prop['expected_price'])"/>
+                                        <th><span t-esc="prop['name']" /></th>
+                                        <th><span t-esc="prop['property_type_id'][1]" /></th>
+                                        <th><span t-esc="prop['total_area']" /></th>
+                                        <th><span t-esc="prop['expected_price']" /></th>
+                                        <th><span t-esc="prop['selling_price']" /></th>
+                                        <th><span t-esc="prop['selling_price'] - prop['expected_price']" /></th>
+
+                                    </tr>
+
+                                </t>
+
+
+                            </tbody>
+
+                        </table>
+                        <table>
+                            <tbody>
+                                 <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th>Total :</th>
+
+                                    <th>
+                                        <span t-esc="total"/>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                </t>
+            </t>
+
+        </template>
+
+    </data>
+</odoo>

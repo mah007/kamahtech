@@ -30,6 +30,9 @@
         'reports/estate_report.xml',
         'views/res_settings.xml',
         "views/estate_menus.xml",
+        'wizards/collective_report_template.xml',
+        'wizards/collective_report.xml',
+        "data/estate.property.csv",
     ],
     # only loaded in demonstration mode
     'demo': [

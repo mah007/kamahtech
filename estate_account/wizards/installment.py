@@ -80,3 +80,4 @@ class EstateInstallment(models.TransientModel):
                 else:
                     vals1['invoice_date'] = date.today() + relativedelta(months=no)
                     invoice.create(vals1)
+            prop.action_sold()

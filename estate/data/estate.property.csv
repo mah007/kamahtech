@@ -1,0 +1,18 @@
+id,bedrooms,expected_price,living_area,postcode,property_type_id,tag_ids,name
+Prop_001,2,100000,0,,House,,3esha fe sahel
+Prop_002,2,50000,0,1212,Apartment,,indoor
+Prop_003,2,50000,0,,Apartment,,okokoko
+Prop_004,2,1000000,0,,Land,,land1151
+Prop_005,2,800000,0,,House,,okayyy
+Prop_006,2,80000,0,,Land,,ay 7aga 7elwa
+Prop_007,2,50000,0,,House,,7amoksha
+Prop_008,2,50000,0,,Apartment,,ay 7aga
+Prop_009,2,2000000,0,,Apartment,,appartment in Heliopolis
+Prop_010,2,5000,0,,House,"estate,house",house in october
+Prop_011,4,4000000,250,11878,Apartment,,Apartment in Nasr City
+Prop_012,2,6000000,0,,Land,,Land in October
+Prop_013,2,18000000,0,,Villa,,Villa in 5th Settlement
+Prop_014,2,5000000,500,,House,,Villa in Zayed
+Prop_015,4,2000000,200,15878,House,,House in Shrouq
+Prop_016,2,50000,150,11545,House,"estate,house",House in Nasr City 1
+Prop_017,4,2000000,400,11585,House,,House in Shobra

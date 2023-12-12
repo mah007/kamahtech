@@ -60,7 +60,7 @@ class EstatePropertyOffer(models.Model):
 
     # ------------------------------------------ CRUD Methods -------------------------------------
 
-    @api.model
+    @api.model_create_multi
     def create(self, vals):
         if vals.get("property_id") and vals.get("price"):
             prop = self.env["estate.property"].browse(vals["property_id"])
